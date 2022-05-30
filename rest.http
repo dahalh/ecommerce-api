@@ -1,2 +1,24 @@
 ### root domain test
 GET http://localhost:8000/
+
+#### ADMIN API ####
+### get admin api
+GET http://localhost:8000/api/v1/admin
+
+### post admin api
+POST http://localhost:8000/api/v1/admin
+Content-Type: application/json
+
+{
+    "fName": "admin",
+    "lName": "admin",
+    "email": "admin@admin.com",
+    "phone": "1234567890",
+    "address": "admin",
+    "dob": "",
+    "password": "admin"
+    
+}
+
+### patch admin api
+PATCH http://localhost:8000/api/v1/admin
