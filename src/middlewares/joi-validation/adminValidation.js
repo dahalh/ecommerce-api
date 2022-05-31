@@ -20,10 +20,24 @@ export const newAdminValidation = (req, res, next) => {
       message: error.message,
     });
   }
-  // res.json({
-  //   status: "success",
-  //   message: "all good",
-  // });
+
+  next();
+};
+
+export const emailVerificationValidation = (req, res, next) => {
+  const schema = Joi.object({
+    email: Joi.string().email({ minDomainSegments: 2 }).required(),
+    emailValidationCode: Joi.string().required(),
+  });
+
+  const { error } = schema.validate(req.body);
+
+  if (error) {
+    return res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
 
   next();
 };

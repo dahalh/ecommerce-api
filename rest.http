@@ -12,11 +12,21 @@ Content-Type: application/json
 {
     "fName": "admin",
     "lName": "admin",
-    "email": "admin@admin.com",
+    "email": "5admin@admin.com",
     "phone": "1234567890",
     "address": "admin",
     "dob": "2020-01-01",
     "password": "admin"
+    
+}
+
+### post admin email verification api
+POST http://localhost:8000/api/v1/admin/email-verification
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "emailValidationCode": "85f780d2-c4e4-43bc-bb47-673f977ca22b"
     
 }
 
