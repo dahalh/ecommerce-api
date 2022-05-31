@@ -30,7 +30,10 @@ app.get("/", (req, res) => {
 
 // error handling
 app.use((err, req, res, next) => {
-  console.log(err);
+  // console.log(err);
+  // log in file system or time series db like cloudwatch
+
+  res.status(err.status || 500);
   res.json({
     status: "error",
     message: err.message,

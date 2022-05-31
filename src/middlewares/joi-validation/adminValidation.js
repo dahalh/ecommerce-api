@@ -20,10 +20,10 @@ export const newAdminValidation = (req, res, next) => {
       message: error.message,
     });
   }
-  res.json({
-    status: "success",
-    message: "all good",
-  });
+  // res.json({
+  //   status: "success",
+  //   message: "all good",
+  // });
 
-  //   next();
+  next();
 };
