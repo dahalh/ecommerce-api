@@ -30,5 +30,15 @@ Content-Type: application/json
     
 }
 
+### admin login api
+POST http://localhost:8000/api/v1/admin/login
+Content-Type: application/json
+
+{
+    "email": "h@d.com",
+    "password": "123456"
+    
+}
+
 ### patch admin api
 PATCH http://localhost:8000/api/v1/admin

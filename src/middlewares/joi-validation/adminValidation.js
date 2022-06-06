@@ -1,20 +1,19 @@
 import Joi from "joi";
 
-export const newAdminValidation = (req, res, next) => {
-  const schema = Joi.object({
-    fName: Joi.string().alphanum().required().min(3).max(20),
-    lName: Joi.string().required().min(3).max(20),
-    email: Joi.string().email({ minDomainSegments: 2 }).required(),
-    phone: Joi.string().required().min(10).max(15),
-    dob: Joi.date().allow(null),
-    address: Joi.string().allow(null).allow(""),
-    password: Joi.string().required(),
-  });
+const fName = Joi.string().alphanum().required().min(3).max(20);
+const lName = Joi.string().required().min(3).max(20);
+const email = Joi.string().email({ minDomainSegments: 2 }).required();
+const phone = Joi.string().required().min(10).max(15);
+const dob = Joi.date().allow(null);
+const address = Joi.string().allow(null).allow("");
+const password = Joi.string().required();
+const requiredStr = Joi.string().required();
 
+const validator = (schema, req, res, next) => {
   const { value, error } = schema.validate(req.body);
-  console.log(error?.message);
 
   if (error) {
+    console.log(error);
     return res.json({
       status: "error",
       message: error.message,
@@ -24,20 +23,34 @@ export const newAdminValidation = (req, res, next) => {
   next();
 };
 
-export const emailVerificationValidation = (req, res, next) => {
+export const newAdminValidation = (req, res, next) => {
   const schema = Joi.object({
-    email: Joi.string().email({ minDomainSegments: 2 }).required(),
-    emailValidationCode: Joi.string().required(),
+    fName,
+    lName,
+    email,
+    phone,
+    dob,
+    address,
+    password,
   });
 
-  const { error } = schema.validate(req.body);
+  validator(schema, req, res, next);
+};
 
-  if (error) {
-    return res.json({
-      status: "error",
-      message: error.message,
-    });
-  }
+export const emailVerificationValidation = (req, res, next) => {
+  const schema = Joi.object({
+    email,
+    emailValidationCode: requiredStr,
+  });
 
-  next();
+  validator(schema, req, res, next);
+};
+
+export const loginValidation = (req, res, next) => {
+  const schema = Joi.object({
+    email,
+    password,
+  });
+
+  validator(schema, req, res, next);
 };
