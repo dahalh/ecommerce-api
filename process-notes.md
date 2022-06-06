@@ -19,4 +19,4 @@ if not
 responsd invalid request access
 if exist
 update user status from inactive to active in the database
-send email
+respond succesfull request message to the client app
