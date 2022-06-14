@@ -12,8 +12,8 @@ export const sendMail = async (emailData) => {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Laptop store 👀" <avi3dmxcclmr4oag@ethereal.email>', // sender address
-    to: "avi3dmxcclmr4oag@ethereal.email", // list of receivers
+    from: '"Laptop store 👀" <z6rdngwzodjcd63g@ethereal.email>', // sender address
+    to: "z6rdngwzodjcd63g@ethereal.email", // list of receivers
     subject: "Please verify your email", // Subject line
     text: `Hi there, please follow the link to verify your email ${emailData.url}`, // plain text body
     html: `

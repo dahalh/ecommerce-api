@@ -42,3 +42,28 @@ Content-Type: application/json
 
 ### patch admin api
 PATCH http://localhost:8000/api/v1/admin
+
+###=== category section =====
+
+### Post new category
+POST http://localhost:8000/api/v1/category
+Content-Type: application/json
+
+{
+    "catName" : "Home Ware"
+}
+
+### Get all active categories
+GET http://localhost:8000/api/v1/category
+
+
+### update status of categories
+PATCH http://localhost:8000/api/v1/category
+Content-Type: application/json
+
+{
+    "_id": "62a7dbc486f4df82297133eb",
+    "status" : "active"
+    
+}
+
