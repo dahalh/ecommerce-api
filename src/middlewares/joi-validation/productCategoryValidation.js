@@ -3,9 +3,12 @@ import Joi from "joi";
 
 export const newCategoryValidation = (req, res, next) => {
   try {
+    console.log(req.body);
     const schema = Joi.object({
-      parentCatId: SHORTSTR.allow(""),
+      _id: SHORTSTR.allow(""),
+      parentCatId: SHORTSTR.allow(null, ""),
       catName: SHORTSTR.required(),
+      status: SHORTSTR.required(),
     });
 
     validator(schema, req, res, next);
