@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema(
+const ProductSchema = new mongoose.Schema(
   {
     status: {
       type: String,
@@ -12,18 +12,20 @@ const productSchema = new mongoose.Schema(
       required: true,
       maxlength: 100,
     },
-    SKU: {
+    sku: {
       type: String,
       unique: true,
       index: 1,
       required: true,
       maxlength: 20,
+      trim: true,
     },
     slug: {
       type: String,
       unique: true,
       index: 1,
       required: true,
+      trim: true,
     },
     description: {
       type: String,
@@ -38,7 +40,7 @@ const productSchema = new mongoose.Schema(
     image: [{ type: String }],
     thumbnail: {
       type: String,
-      required: true,
+      //   required: true,
       default: "",
     },
     price: {

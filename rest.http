@@ -67,3 +67,18 @@ Content-Type: application/json
     
 }
 
+#============= Product api
+### post product
+POST http://localhost:8000/api/v1/products
+Content-Type:application/json
+
+{
+    "name": "MacBook Pro 14 Inch",
+    "sku": "MBP-14" ,
+    "description": "lorem impsum ",
+    "qty": 100,
+    "price": 3500,
+    "salesPrice": 0,
+    "salesDate": null
+}
+

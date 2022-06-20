@@ -1,21 +1,21 @@
 import ProductSchema from "./Product.Schema.js";
 
-const insertProduct = (obj) => {
+export const insertProduct = (obj) => {
   return ProductSchema(obj).save();
 };
 
-const getProduct = (filter) => {
+export const getProduct = (filter) => {
   return ProductSchema.findOne(filter);
 };
 
-const getMultipleProducts = (filter) => {
+export const getMultipleProducts = (filter) => {
   return ProductSchema.find(filter);
 };
 
-const updateProduct = (filter, updateObj) => {
+export const updateProduct = (filter, updateObj) => {
   return ProductSchema.findOneAndUpdate(filter, updateObj);
 };
 
-const deleteProduct = (filter) => {
+export const deleteProduct = (filter) => {
   return ProductSchema.findOneAndDelete(filter);
 };
