@@ -77,8 +77,12 @@ Content-Type:application/json
     "sku": "MBP-14" ,
     "description": "lorem impsum ",
     "qty": 100,
-    "price": 3500,
+    "price": 3000,
     "salesPrice": 0,
     "salesDate": null
 }
+
+
+### get all product
+GET http://localhost:8000/api/v1/products
 

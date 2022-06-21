@@ -12,4 +12,4 @@ All the api end points will follow the following patter `{rootUrl}/api/v1/produc
 
 | #   | PATH | METHOD | PRIVATE | DESCRIPTION                                         |
 | --- | ---- | ------ | ------- | --------------------------------------------------- |
-| 1.  | "/   | POST   | Yes     | This api will allow you to create and post products |
+| 1.  | "/ " | POST   | Yes     | This api will allow you to create and post products |

@@ -36,7 +36,9 @@ export const newProductValidation = (req, res, next) => {
       qty: QTY.required(),
       price: PRICE.required(),
       salesPrice: PRICE,
-      salesDate: DATE.allow(null),
+      salesStartDate: DATE.allow(null),
+      salesEndDate: DATE.allow(null),
+      catId: SHORTSTR.required(),
     });
 
     validator(schema, req, res, next);
