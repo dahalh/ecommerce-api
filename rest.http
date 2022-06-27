@@ -86,3 +86,23 @@ Content-Type:application/json
 ### get all product
 GET http://localhost:8000/api/v1/products
 
+### get single product
+GET http://localhost:8000/api/v1/products/62b0f97a65c74d297be5a263
+
+### update product
+PUT http://localhost:8000/api/v1/products
+Content-Type:application/json
+
+{
+"catId": "62afc36dc061d755283b8891",
+"description": "dsdsdddsdssds",
+"name": "ds",
+"price": 98,
+"qty": 100,
+"salesEndDate": null,
+"salesPrice": 0,
+"salesStartDate": null,
+"status": "active",
+"_id": "62b90273e15222661aea449e"
+}   
+
