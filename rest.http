@@ -106,3 +106,33 @@ Content-Type:application/json
 "_id": "62b90273e15222661aea449e"
 }   
 
+#====== payment method api
+### get all payment methods
+GET http://localhost:8000/api/v1/payment-method
+
+### post payment methods
+POST http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+    "name": "Pay by Bank Transferssss",
+    "status": "inactive",
+    "description": "Please EFT to the following accounts BAS: 43434, AC:808008080"
+}
+
+### update payment methods
+PUT http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+    "_id": "62ba30bbdd42545240d2a7ef",
+    "name": "Pay by Credit Card",
+    "status": "active",
+    "description": "Use this payment is to Pay by Card"
+}
+
+
+### delete
+# DELETE  http://localhost:8000/api/v1/payment-method/
+DELETE  http://localhost:8000/api/v1/payment-method/62ba3cb85fe56c69566e040a
+
