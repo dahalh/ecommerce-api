@@ -13,9 +13,16 @@ import {
 } from "../models/admin/Admin.models.js";
 const router = express.Router();
 import { v4 as uuidv4 } from "uuid";
-import { otpNotification, sendMail } from "../../helpers/emailHelper.js";
+import {
+  otpNotification,
+  profileUpdateNotification,
+  sendMail,
+} from "../../helpers/emailHelper.js";
 import { createOtp } from "../../helpers/randomGeneratorHelper.js";
-import { insertSession } from "../models/session/SessionModel.js";
+import {
+  deleteSession,
+  insertSession,
+} from "../models/session/SessionModel.js";
 
 router.get("/", (req, res) => {
   res.json({
@@ -159,6 +166,10 @@ router.put("/", updateAdminValidation, async (req, res, next) => {
 
         if (updatedAdmin?._id) {
           // send email notification saying profile is updated
+          profileUpdateNotification({
+            fName: updatedUser.fName,
+            email: updatedUser.email,
+          });
           return res.json({
             status: "success",
             message: "Your profile has been updated successfully",
@@ -221,6 +232,46 @@ router.post("/otp-request", async (req, res, next) => {
     res.json({
       status: "error",
       message: "Invalid request",
+    });
+  } catch (error) {
+    error.status = 500;
+    next(error);
+  }
+});
+
+// reset password
+router.patch("/password", async (req, res, next) => {
+  try {
+    const { otp, email, password } = req.body;
+    console.log(req.bdoy);
+
+    // 1. get session info based on the otp, so that we get the user email
+    const session = await deleteSession({
+      token: otp,
+      associate: email,
+    });
+    console.log(session);
+    if (session?._id) {
+      // 2. based on the email update password in the database after encrypting
+      const update = {
+        password: encryptPassword(password),
+      };
+      const updatedUser = await updateAdmin({ email }, update);
+      if (updatedUser?._id) {
+        // send the email notification
+        profileUpdateNotification({
+          fName: updatedUser.fName,
+          email: updatedUser.email,
+        });
+        res.json({
+          status: "success",
+          message: "Your password has been updated",
+        });
+      }
+    }
+    res.json({
+      status: "error",
+      message: "Invalid request. Unable to update the password",
     });
   } catch (error) {
     error.status = 500;
