@@ -12,6 +12,23 @@ import {
   updateProductById,
 } from "../models/product/Product.model.js";
 
+import multer from "multer";
+// multer setup for validation and upload destination
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log(file);
+    let error = null;
+    // validation test
+    cb(error, "public/img/products");
+  },
+  filename: (req, file, cb) => {
+    const fullFileName = Date.now() + "-" + file.originalname;
+    cb(null, fullFileName);
+  },
+});
+
+const upload = multer({ storage });
+
 const router = express.Router();
 router.get("/:_id?", async (req, res, next) => {
   try {
@@ -32,33 +49,46 @@ router.get("/:_id?", async (req, res, next) => {
   }
 });
 
-router.post("/", newProductValidation, async (req, res, next) => {
-  try {
-    console.log(req.body);
-    const { name } = req.body;
-    const slug = slugify(name, { lower: true, trim: true });
-    req.body.slug = slug;
+router.post(
+  "/",
+  upload.array("images", 5),
+  newProductValidation,
+  async (req, res, next) => {
+    try {
+      const files = req.files;
+      console.log(files);
 
-    const result = await insertProduct(req.body);
-    result?._id
-      ? res.json({
-          status: "success",
-          message: "New product has been created!",
-        })
-      : res.json({
-          status: "error",
-          message: "Error! Unable to create new product",
-        });
-  } catch (error) {
-    // duplicate slug and the sku
-    if (error.message.includes("E11000 duplicate key error collection")) {
-      error.message =
-        "Another product with similar either Name or SKU already exists";
-      error.status = 200;
+      const images = files.map((img) => img.path);
+
+      const { name } = req.body;
+      const slug = slugify(name, { lower: true, trim: true });
+      req.body.slug = slug;
+
+      const result = await insertProduct({
+        ...req.body,
+        images,
+        thumbnail: images[0],
+      });
+      result?._id
+        ? res.json({
+            status: "success",
+            message: "New product has been created!",
+          })
+        : res.json({
+            status: "error",
+            message: "Error! Unable to create new product",
+          });
+    } catch (error) {
+      // duplicate slug and the sku
+      if (error.message.includes("E11000 duplicate key error collection")) {
+        error.message =
+          "Another product with similar either Name or SKU already exists";
+        error.status = 200;
+      }
+      next(error);
     }
-    next(error);
   }
-});
+);
 
 router.delete("/", async (req, res, next) => {
   try {
@@ -83,26 +113,47 @@ router.delete("/", async (req, res, next) => {
   }
 });
 
-router.put("/", updateProductValidation, async (req, res, next) => {
-  try {
-    console.log(req.body);
+router.put(
+  "/",
+  upload.array("newImages", 5),
+  updateProductValidation,
+  async (req, res, next) => {
+    try {
+      console.log(req.body);
 
-    const { _id, ...rest } = req.body;
+      const { _id, imgToDelete, ...rest } = req.body;
+      // 1. make new array for the images and replace in the database
+      const files = req.files;
+      // console.log(req.body, "passed through validaition");
+      const images = files.map((img) => img.path); // new incoming images
+      const oldImgList = rest.images.split(","); // old images from database before editing product
+      // imgToDelete holds the images that is in the oldImagList that need to be removed
 
-    const result = await updateProductById(_id, rest);
+      // remove the deleted image from oldImagList
 
-    result?._id
-      ? res.json({
-          status: "success",
-          message: "Product has been updated",
-        })
-      : res.json({
-          status: "error",
-          message: "Unable to update the product, please try again later",
-        });
-  } catch (error) {
-    next(error);
+      const filteredImages = oldImgList.filter(
+        (img) => !imgToDelete.includes(img)
+      );
+
+      // override from rest
+      rest.images = [...filteredImages, ...images];
+      // 2. delete image from the file system
+
+      const result = await updateProductById(_id, rest);
+
+      result?._id
+        ? res.json({
+            status: "success",
+            message: "Product has been updated",
+          })
+        : res.json({
+            status: "error",
+            message: "Unable to update the product, please try again later",
+          });
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 export default router;
