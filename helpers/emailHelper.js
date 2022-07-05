@@ -43,6 +43,7 @@ export const sendMail = async (emailData) => {
       Laptop Store
       `, // html body
   };
+  emailProcessor(mailBody);
 };
 
 // userInfo should have email, fName
