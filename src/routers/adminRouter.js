@@ -1,5 +1,5 @@
 import express from "express";
-import { encryptPassword, verifyPassword } from "../../helpers/bcrypthelper.js";
+import { encryptPassword, verifyPassword } from "../helpers/bcrypthelper.js";
 import {
   emailVerificationValidation,
   loginValidation,
@@ -18,12 +18,13 @@ import {
   otpNotification,
   profileUpdateNotification,
   sendMail,
-} from "../../helpers/emailHelper.js";
-import { createOtp } from "../../helpers/randomGeneratorHelper.js";
+} from "../helpers/emailHelper.js";
+import { createOtp } from "../helpers/randomGeneratorHelper.js";
 import {
   deleteSession,
   insertSession,
 } from "../models/session/SessionModel.js";
+import { createJWTs, signAccessJwt } from "../helpers/jwtHelper.js";
 
 router.get("/", (req, res) => {
   res.json({
@@ -126,10 +127,13 @@ router.post("/login", loginValidation, async (req, res, next) => {
       if (isMatched) {
         user.password = undefined;
         // for now
+
+        const jwts = await createJWTs({ email: user.email });
         res.json({
           status: "success",
           message: "User logged in successfully",
           user,
+          jwts,
         });
 
         return;
@@ -294,7 +298,7 @@ router.patch(
       if (user?._id) {
         const isMatched = verifyPassword(currentPassword, user.password);
         if (isMatched) {
-          const hashPassword = encryptPassword(req.body.password);
+          const hashPassword = encryptPassword(password);
 
           const updatedUser = await updateAdmin(
             {

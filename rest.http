@@ -35,8 +35,8 @@ POST http://localhost:8000/api/v1/admin/login
 Content-Type: application/json
 
 {
-    "email": "h@d.com",
-    "password": "123456"
+    "email": "dahalhimanshu@hotmail.com",
+    "password": "bbbbB11"
     
 }
 
@@ -63,9 +63,11 @@ PATCH http://localhost:8000/api/v1/admin
 ### Post new category
 POST http://localhost:8000/api/v1/category
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhaGFsaGltYW5zaHVAaG90bWFpbC5jb20iLCJpYXQiOjE2NTc1MTM4NDgsImV4cCI6MTY1NzUxNDc0OH0._Smzgo6-pXm0gSxiDugQpI62Z-2N009YgqiKzzDEvPc
 
 {
-    "catName" : "Television"
+    "catName" : "Television",
+    "status": "inactive"
 }
 
 ### Get all active categories
