@@ -43,11 +43,14 @@ Content-Type: application/json
 ### admin update password api
 PATCH http://localhost:8000/api/v1/admin/update-password
 Content-Type: application/json
+# aaaaA11
+# bbbbB11
 
 {
     "email": "dahalhimanshu@hotmail.com",
     "password": "123456",
     "currentPassword" : "aaaaA11"
+    
 
     
 }

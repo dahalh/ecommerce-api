@@ -168,8 +168,8 @@ router.put("/", updateAdminValidation, async (req, res, next) => {
         if (updatedAdmin?._id) {
           // send email notification saying profile is updated
           profileUpdateNotification({
-            fName: updatedUser.fName,
-            email: updatedUser.email,
+            fName: updatedAdmin.fName,
+            email: updatedAdmin.email,
           });
           return res.json({
             status: "success",
