@@ -58,6 +58,10 @@ Content-Type: application/json
 ### patch admin api
 PATCH http://localhost:8000/api/v1/admin
 
+### request new accessJWT
+GET http://localhost:8000/api/v1/admin/accessjwt
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhaGFsaGltYW5zaHVAaG90bWFpbC5jb20iLCJpYXQiOjE2NTc1ODA3NTMsImV4cCI6MTY2MDE3Mjc1M30.4OctfDoc5UNQrOBYGSnPOPr2bL6fSkUoGIs6pbRK6j4
+
 ###=== category section =====
 
 ### Post new category

@@ -20,12 +20,12 @@ export const signAccessJwt = async (payload) => {
   return accessJWT;
 };
 
-export const signRefreshJwt = (payload) => {
+export const signRefreshJwt = async (payload) => {
   const refreshJWT = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
     expiresIn: "30d",
   });
 
-  updateAdmin({ email: payload.email }, { refreshJWT });
+  await updateAdmin({ email: payload.email }, { refreshJWT });
   return refreshJWT;
 };
 
@@ -40,10 +40,14 @@ export const verifyAccessJwt = (token) => {
   try {
     return jwt.verify(token, process.env.JWT_ACCESS_SECRET);
   } catch (error) {
-    if (error.message === "jwt expired") {
+    if (error.message === "jwt expired!") {
       deleteSession({ type: "jwt", token });
     }
     console.log(error.message);
     return error.message;
   }
+};
+
+export const verifyRefreshJwt = (token) => {
+  return jwt.verify(token, process.env.JWT_REFRESH_SECRET);
 };
