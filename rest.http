@@ -157,3 +157,7 @@ Content-Type: application/json
 # DELETE  http://localhost:8000/api/v1/payment-method/
 DELETE  http://localhost:8000/api/v1/payment-method/62ba3cb85fe56c69566e040a
 
+
+========= customer api ======
+### get customer
+GET http://localhost:8000/api/v1/customers/5
