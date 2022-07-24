@@ -31,12 +31,16 @@ import productRouter from "./src/routers/productRouter.js";
 import paymentMethodRouter from "./src/routers/paymentMethodRouter.js";
 import { adminAuth } from "./src/middlewares/auth-middlewares/authMiddleware.js";
 import customerRouter from "./src/routers/customerRouter.js";
+import ratingRouter from "./src/routers/ratingRouter.js";
+import orderRouter from "./src/routers/orderRouter.js";
 
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/category", adminAuth, categoryRouter);
 app.use("/api/v1/products", adminAuth, productRouter);
 app.use("/api/v1/payment-method", adminAuth, paymentMethodRouter);
-app.use("/api/v1/customers", customerRouter);
+app.use("/api/v1/customers", adminAuth, customerRouter);
+app.use("/api/v1/ratings", adminAuth, ratingRouter);
+app.use("/api/v1/orders", adminAuth, orderRouter);
 
 app.get("/", (req, res) => {
   res.json({
