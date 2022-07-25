@@ -54,7 +54,7 @@ export const getOrders = (_id) => {
   const orders = [
     {
       _id: "ssss1",
-      status: "processing", // new, pending, processing, complete, cancelled
+      status: "shipped", // new, pending, processing, complete, cancelled
       buyer: {
         buyerId: "121221", //_id of the user
         fName: "dsdsd",
@@ -84,6 +84,366 @@ export const getOrders = (_id) => {
     },
     {
       _id: "ssss2",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss3",
+      status: "shipped", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss4",
+      status: "cancelled", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss5",
+      status: "cancelled", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss6",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss7",
+      status: "cancelled", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss8",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss9",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss10",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss11",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss12",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss13",
+      status: "processing", // new, pending, processing, complete, cancelled
+      buyer: {
+        buyerId: "121221", //_id of the user
+        fName: "dsdsd",
+        lName: "Dsdsd",
+        email: "",
+        phone: "dsds",
+      },
+      cart: {
+        productId: "dsdsdsd",
+        productName: "HD TV",
+        salePrice: "4444",
+        qty: 20,
+        thumbnail: "http://",
+        subTotal: 333,
+      },
+      cartTotal: "444",
+      discount: "50",
+      discountCode: "dsdsd",
+      totalAmount: "34",
+      paymentInfo: {
+        status: "paid", // pending or paid
+        method: "cash on pickup", // credit card...
+        paidAmount: "12122",
+        transactionID: "dsdds",
+        paidDate: "10/10/2021",
+      },
+    },
+    {
+      _id: "ssss14",
       status: "processing", // new, pending, processing, complete, cancelled
       buyer: {
         buyerId: "121221", //_id of the user
