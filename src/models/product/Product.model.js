@@ -1,4 +1,4 @@
-import ProductSchema from "./Product.Schema.js";
+import ProductSchema from "./Product.schema.js";
 
 export const insertProduct = (obj) => {
   return ProductSchema(obj).save();
