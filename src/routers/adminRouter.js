@@ -48,6 +48,7 @@ router.get("/", adminAuth, (req, res, next) => {
 });
 
 // new admin registration
+// router.post("/", adminAuth, newAdminValidation, async (req, res, next) => {
 router.post("/", newAdminValidation, async (req, res, next) => {
   try {
     const hashPassword = encryptPassword(req.body.password);
